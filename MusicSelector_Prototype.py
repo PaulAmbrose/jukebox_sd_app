@@ -11,13 +11,13 @@ import sys
 import shutil
 
 
-def get_size(start_path):
-    total_size = 0
-    for dirpath, dirnames, filenames in os.walk(start_path):
-        for f in filenames:
-            fp = os.path.join(dirpath, f)
-            total_size += os.path.getsize(fp)
-    return total_size
+#def get_size(start_path):
+ #   total_size = 0
+ #   for dirpath, dirnames, filenames in os.walk(start_path):
+  #      for f in filenames:
+    #        fp = os.path.join(dirpath, f)
+     #       total_size += os.path.getsize(fp)
+    #return total_size
 
 def get_number_source_files(source):
     
@@ -36,11 +36,11 @@ def main_menu():
         get_dest_files = used
         calc_dest_space = (get_dest_capacity - get_dest_files)
         random_file = random.choice(os.listdir(source))
-        random_file_size = get_size(random_file)
+      #  random_file_size = get_size(random_file)
+        random_file_size = os.path.getsize(source + random_file)
         print(random_file_size)
         print(calc_dest_space)
-        print()
-        if random_file_size < calc_dest_space
+        if random_file_size < calc_dest_space:
             source_file = source + random_file
             try:
                 shutil.copytree(source_file, destination + random_file +"/")
