@@ -29,7 +29,7 @@ def main_menu():
     source = input("Please enter the source directory for your music store:  ") + "/"
     destination = input("Please enter the destination directory of your SD card:  ") + "/"
     counter = 0
-    while counter < 5:
+    while counter < 3:
     #while  True:
         total, used, free = shutil.disk_usage(destination)
         get_dest_capacity = total
@@ -37,10 +37,11 @@ def main_menu():
         calc_dest_space = (get_dest_capacity - get_dest_files)
         random_file = random.choice(os.listdir(source))
         random_file_size = get_size(random_file)
-        if random_file_size < calc_dest_space:
+        print(random_file_size)
+        print(calc_dest_space)
+        print()
+        if random_file_size < calc_dest_space
             source_file = source + random_file
-            print(source_file)
-            print(destination)
             try:
                 shutil.copytree(source_file, destination + random_file +"/")
                 counter = counter +1
