@@ -29,8 +29,8 @@ def main_menu():
     source = input("Please enter the source directory for your music store:  ") + "/"
     destination = input("Please enter the destination directory of your SD card:  ") + "/"
     counter = 0
-    #while counter < 5:
-    while  True:
+    while counter < 5:
+    #while  True:
         total, used, free = shutil.disk_usage(destination)
         get_dest_capacity = total
         get_dest_files = used
@@ -41,8 +41,11 @@ def main_menu():
             source_file = source + random_file
             print(source_file)
             print(destination)
-            shutil.copytree(source_file, destination + random_file + str(counter) +"/")
-            counter = counter +1
+            try:
+                shutil.copytree(source_file, destination + random_file +"/")
+                counter = counter +1
+            except:
+                pass
         else:
             break
     print("Random File Transfer Complete")
