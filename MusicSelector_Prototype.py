@@ -22,8 +22,6 @@ def main_menu():
         calc_dest_space = (get_dest_capacity - get_dest_files)
         random_file = random.choice(os.listdir(source))
         random_file_size = os.path.getsize(source + random_file)
-        print(random_file_size)
-        print(calc_dest_space)
         if random_file_size < calc_dest_space:
             source_file = source + random_file
             try:
