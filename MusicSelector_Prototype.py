@@ -16,8 +16,8 @@ def main_menu():
     destination = input("Please enter the destination directory of your SD card:  ") + "/"
     percentage_fill = input("Please enter the % (in decimal e.g. 0.1 for 10%) of remaining space on your card you wish to fill:  ")
     counter = 0
+    files_added = 0
     while  True:
-        files_added = []
         total, used, free = shutil.disk_usage(destination)
         get_dest_capacity = (total * percentage_fill)
         get_dest_files = used
@@ -28,7 +28,7 @@ def main_menu():
             source_file = source + random_file
             try:
                 shutil.copytree(source_file, destination + random_file +"/")
-                files_added.append(random_file_size)
+                files_added = files_added + random_file_size
                 counter = counter +1
             except:
                 pass
