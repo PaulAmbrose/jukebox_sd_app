@@ -28,7 +28,7 @@ def main_menu():
             source_file = source + random_file
             try:
                 shutil.copytree(source_file, destination + random_file +"/")
-                random_file.append(random_file_size)
+                files_added.append(random_file_size)
                 counter = counter +1
             except:
                 pass
