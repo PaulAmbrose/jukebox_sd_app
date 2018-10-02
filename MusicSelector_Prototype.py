@@ -7,15 +7,14 @@ import shutil
 import logging
 import time
 
-datestamp = time.strftime("%c")
-logging.basicConfig(filename="/home/pi/pi2_staging/Update_log_" + datestamp + "_.txt", level=logging.INFO, format=" %(asctime)s  -  %(levelname)s  -  %(message)s")
-
 def get_number_source_files(source):
     
     total_number_files = len([name for name in os.listdir(source) if os.path.isfile(os.path.join(source, name))])
     return total_number_files
 
 def main_menu():
+    datestamp = time.strftime("%c")
+    logging.basicConfig(filename='/home/pi/pi2_staging/Update_log_' + datestamp + '_.txt', level=logging.DEBUG, format=' %(asctime)s  -  %(levelname)s  -  %(message)s')
     print("Welcome to Paul's SD Card Jukebox Generator\n")
     source = input("Please enter the source directory for your music store:  ") + "/"
     destination = input("Please enter the destination directory of your SD card:  ") + "/"
@@ -36,7 +35,7 @@ def main_menu():
                 shutil.copytree(source_file, destination + random_file +"/")
                 files_added = (files_added + random_file_size)
                 counter = counter +1
-                logging.info('File_copied')
+                logging.DEBUG("File - " + source_file +  "copied to - "  + destination) 
             except:
                 pass
         else:
