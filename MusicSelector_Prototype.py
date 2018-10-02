@@ -8,8 +8,7 @@ import logging
 import time
 
 datestamp = time.strftime("%c")
-logging.basicConfig(filename="Update_log_" + datestamp + "_.txt", level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename="/home/pi/pi2_staging/Update_log_" + datestamp + "_.txt", level=logging.INFO, format=" %(asctime)s  -  %(levelname)s  -  %(message)s")
 
 def get_number_source_files(source):
     
@@ -37,7 +36,7 @@ def main_menu():
                 shutil.copytree(source_file, destination + random_file +"/")
                 files_added = (files_added + random_file_size)
                 counter = counter +1
-                logging.debug("File_" + source_file + "_copied to_" + destination)
+                logging.info('File_copied')
             except:
                 pass
         else:
