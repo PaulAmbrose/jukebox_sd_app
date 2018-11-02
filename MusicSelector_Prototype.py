@@ -25,12 +25,12 @@ def main_menu():
     while  True:
         total, used, free = shutil.disk_usage(destination)
         get_dest_capacity = (total * (int(percentage_fill)/100))
-        get_dest_files = used
-        calc_dest_space = (get_dest_capacity - files_added)
         random_file = random.choice(os.listdir(source))
         random_file_size = os.path.getsize(source + random_file)
-        if random_file_size < calc_dest_space:
+        if random_file_size < (get_dest_capacity - used):
             source_file = source + random_file
+            print("random file size " + str(random_file_size))
+            print("calc_dest_space " + str(get_dest_capacity))
             try:
                 shutil.copytree(source_file, destination + random_file +"/")
                 files_added = (files_added + random_file_size)
